@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  databasetaf1:
+    image: mysql
+    container_name: databasetaf1
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "${DB_LOCAL_PORT}:${DB_DOCKER_PORT}"
+    networks:
+      - app-network
+
+  web:
+    image: hamsak/backendtaf1:v1.0.0
+    restart: unless-stopped
+    env_file: ./.env
+    container_name: fastapi_backend
+    ports:
+      - "${APP_LOCAL_PORT}:${APP_DOCKER_PORT}"
+    volumes:
+      - ./app:/code/app
+    environment:
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_HOST: ${DATABASE_HOST}
+    depends_on:
+      - databasetaf1
+    networks:
+      - app-network
+
+volumes:
+  db_data:
+
+networks:
+  app-network:
