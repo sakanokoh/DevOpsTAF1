@@ -8,7 +8,6 @@ Ce projet propose une API REST développée avec FastAPI et MySQL, permettant de
 
 - **Création d'un étudiant** : Ajouter un nouvel étudiant dans la base de données.
 - **Consultation des étudiants** : Récupérer la liste complète des étudiants ou un étudiant spécifique par son ID.
-- **Mise à jour d'un étudiant** : Modifier les informations d'un étudiant existant.
 - **Suppression d'un étudiant** : Supprimer un étudiant en fonction de son ID.
 
 ## Prérequis
