@@ -104,7 +104,6 @@ Une fois que l'application est démarrée, vous pouvez accéder aux différents 
    - **GET** `/students/` : Récupérer la liste de tous les étudiants.
    - **GET** `/students/{id}` : Récupérer un étudiant spécifique par son ID.
    - **POST** `/students/` : Créer un nouvel étudiant.
-   - **PUT** `/students/{id}` : Mettre à jour un étudiant existant.
    - **DELETE** `/students/{id}` : Supprimer un étudiant par son ID.
 
 
